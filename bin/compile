@@ -8,6 +8,7 @@ build_dir="$1"
 mkdir -p "$build_dir/bin/" "$build_dir/conf/" "$build_dir/html/"
 
 cp bin/nginx "$build_dir/bin/"
+pwd
 nginx_version=$(./bin/nginx -V 2>&1 | head -1 | awk '{ print $NF }')
 echo "-----> nginx-buildpack: Installed ${nginx_version} to app/bin/"
 
