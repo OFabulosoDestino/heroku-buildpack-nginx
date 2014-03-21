@@ -3,7 +3,7 @@
 
 set -e
 
-$build_dir="$1"
+build_dir="$1"
 
 mkdir -p "$build_dir/bin/" "$build_dir/conf/" "$build_dir/html/"
 
