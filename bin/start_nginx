@@ -5,5 +5,5 @@ erb conf/nginx.conf.erb > conf/nginx.conf
 mkdir -p logs
 touch logs/access.log logs/error.log
 # prints logs to stdout
-(tail -qF -n 0 --pid=\$\$ logs/*.log &)
+(tail -qF -n 0 --pid=$$ logs/*.log &)
 exec bin/nginx -p .
