@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# vim: set fileencoding=utf-8 ts=2 sw=2 tw=79 noet ft=sh
+
+set -e
+
+$build_dir="$1"
+
+mkdir -p "$build_dir/bin/" "$build_dir/conf/"
+
+cp bin/nginx "$build_dir/bin/"
+nginx_version=$(./bin/nginx -V 2>&1 | head -1 | awk '{ print $NF }')
+echo "-----> nginx-buildpack: Installed ${nginx_version} to app/bin/"
+
+cp bin/start_nginx "$1/bin/"
+echo '-----> nginx-buildpack: Added start_nginx to app/bin/'
+
+cp support/mime.types "$1/conf/"
+echo '-----> nginx-buildpack: Default mime.types copied to app/conf/'
