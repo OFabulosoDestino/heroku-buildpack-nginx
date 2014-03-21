@@ -7,6 +7,7 @@ nginx_version="1.5.10"
 pcre_version="8.34"
 
 tempdir=$(mktemp -d -t nginx.XXXXXX)
+
 cd $tempdir
 
 curl http://nginx.org/download/nginx-${nginx_version}.tar.gz | tar xzv
@@ -14,5 +15,13 @@ cd nginx-${nginx_version}
 
 curl ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${pcre_version}.tar.gz | tar xzv
 
-./configure --prefix=/tmp/nginx --with-pcre=pcre-${pcre_version} --with-http_stub_status_module --with-http_gzip_static_module --with-http_realip_module --with-http_ssl_module
+./configure \
+	--prefix=/tmp/nginx \
+	--with-pcre=pcre-${pcre_version} \
+	--with-http_stub_status_module \
+	--with-http_gzip_static_module \
+	--with-http_realip_module \
+	--with-http_ssl_module
 make install
+
+echo "All done. Nginx binary can now be found in /tmp/nginx/sbin/nginx."
