@@ -3,8 +3,8 @@
 
 set -e
 
-nginx_version="1.5.10"
-pcre_version="8.34"
+nginx_version="1.14.0"
+pcre_version="8.42"
 
 tempdir=$(mktemp -d -t nginx.XXXXXX)
 
